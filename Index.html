@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildEye Livestream</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #333;
+    }
+    video {
+      width: 90%;
+      max-width: 800px;
+      border: 4px solid #007BFF;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .footer {
+      margin-top: 2rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    .login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .login input {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    .login button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #stream-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      max-width: 200px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login" id="login-form">
+    <img src="b16d4ae8-7726-4884-833e-3df2c00d2d72.png" alt="BuildEye Logo" class="logo">
+    <h1>BuildEye Livestream Zugang</h1>
+    <input type="text" id="username" placeholder="Benutzername">
+    <input type="password" id="password" placeholder="Passwort">
+    <button onclick="authenticate()">Einloggen</button>
+  </div>
+
+  <div id="stream-container">
+    <img src="b16d4ae8-7726-4884-833e-3df2c00d2d72.png" alt="BuildEye Logo" class="logo">
+    <h1>Live-Stream Ihrer Baustelle</h1>
+    <video controls autoplay muted>
+      <source src="https://deinserver.de/streams/bauprojekt1.m3u8" type="application/x-mpegURL">
+      Ihr Browser unterstützt leider kein HTML5-Video mit HLS.
+    </video>
+    <div class="footer">
+      &copy; 2025 BuildEye GmbH – Sicherheit. Überblick. Fortschritt.
+    </div>
+  </div>
+
+  <script>
+    const credentials = {
+      username: "kunde1",
+      password: "geheim123"
+    };
+
+    function authenticate() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === credentials.username && pass === credentials.password) {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("stream-container").style.display = "flex";
+      } else {
+        alert("Falscher Benutzername oder Passwort.");
+      }
+    }
+  </script>
+</body>
+</html>
+
